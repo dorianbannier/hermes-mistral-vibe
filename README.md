@@ -39,20 +39,21 @@ Contrat Hermes :
 
 ## Installation
 
-Clonez le dépôt, puis indiquez explicitement le domicile du profil à modifier :
+Clonez le dépôt, puis installez le plugin dans le profil Hermes courant. La
+commande ci-dessous utilise `~/.hermes` par défaut et respecte `HERMES_HOME`
+s’il est déjà défini :
 
 ```sh
 git clone https://github.com/dorianbannier/hermes-mistral-vibe.git
 cd hermes-mistral-vibe
-HERMES_HOME="${HERMES_HOME:-$HOME/.hermes}"
-python3 install.py --home "$HERMES_HOME"
+python3 install.py --home "${HERMES_HOME:-$HOME/.hermes}"
 ```
 
 L’installateur utilise uniquement la bibliothèque standard Python. Il ne touche
 qu’à :
 
 ```text
-$HERMES_HOME/plugins/model-providers/mistral-vibe/
+<dossier Hermes>/plugins/model-providers/mistral-vibe/
   __init__.py
   plugin.yaml
   vibe_provider.py
@@ -67,14 +68,14 @@ installation existante est refusée par défaut.
 La présence d’un fichier inattendu provoque un refus :
 
 ```sh
-python install.py --home "$HERMES_HOME" --update
+python3 install.py --home "${HERMES_HOME:-$HOME/.hermes}" --update
 ```
 
 `--force` supprime puis remplace **uniquement** le dossier du plugin, y compris ses
 fichiers inattendus. N’utilisez cette option qu’après inspection et sauvegarde :
 
 ```sh
-python install.py --home "$HERMES_HOME" --force
+python3 install.py --home "${HERMES_HOME:-$HOME/.hermes}" --force
 ```
 
 Rafraîchissez ou redémarrez Hermes Desktop après installation ou mise à jour afin
@@ -83,13 +84,25 @@ modèle configuré.
 
 ## Authentification
 
-Connexion navigateur :
+Pour le profil Hermes par défaut, lancez simplement :
 
 ```sh
-HERMES_HOME="$HERMES_HOME" hermes auth add mistral-vibe
-# Machine sans navigateur :
-HERMES_HOME="$HERMES_HOME" hermes auth add mistral-vibe --no-browser
-HERMES_HOME="$HERMES_HOME" hermes auth status mistral-vibe
+hermes auth add mistral-vibe
+hermes auth status mistral-vibe
+```
+
+Sur une machine sans navigateur, utilisez l’option `--no-browser` :
+
+```sh
+hermes auth add mistral-vibe --no-browser
+```
+
+Si le plugin a été installé dans un autre domicile Hermes, utilisez le **même**
+`HERMES_HOME` pour l’authentification. Remplacez le chemin d’exemple par le vôtre :
+
+```sh
+HERMES_HOME="/chemin/vers/le-profil-hermes" hermes auth add mistral-vibe
+HERMES_HOME="/chemin/vers/le-profil-hermes" hermes auth status mistral-vibe
 ```
 
 L’URL temporaire affichée est sensible. Le credential est enregistré par Hermes
