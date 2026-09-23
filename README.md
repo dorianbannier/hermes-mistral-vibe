@@ -97,13 +97,15 @@ Sur une machine sans navigateur, utilisez l’option `--no-browser` :
 hermes auth add mistral-vibe --no-browser
 ```
 
-Si le plugin a été installé dans un autre domicile Hermes, utilisez le **même**
-`HERMES_HOME` pour l’authentification. Remplacez le chemin d’exemple par le vôtre :
+Si vous utilisez un profil Hermes nommé, passez son nom avec `-p` :
 
 ```sh
-HERMES_HOME="/chemin/vers/le-profil-hermes" hermes auth add mistral-vibe
-HERMES_HOME="/chemin/vers/le-profil-hermes" hermes auth status mistral-vibe
+hermes -p mon-profil auth add mistral-vibe
+hermes -p mon-profil auth status mistral-vibe
 ```
+
+Le plugin doit être installé dans ce même profil. Remplacez `mon-profil` par le
+nom affiché par `hermes profile list`.
 
 L’URL temporaire affichée est sensible. Le credential est enregistré par Hermes
 dans le pool `mistral-vibe` de `auth.json` avec les protections fournies par
