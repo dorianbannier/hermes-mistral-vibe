@@ -147,15 +147,24 @@ garde-fous de requête. Aucun compte ni secret réel n’est requis.
 
 ## Déconnexion et désinstallation
 
+Pour le profil Hermes par défaut :
+
 ```sh
-HERMES_HOME="$HERMES_HOME" hermes auth logout mistral-vibe
-rm -rf -- "$HERMES_HOME/plugins/model-providers/mistral-vibe"
+hermes auth logout mistral-vibe
+hermes plugins remove mistral-vibe
+```
+
+Pour un profil nommé :
+
+```sh
+hermes -p mon-profil auth logout mistral-vibe
+hermes -p mon-profil plugins remove mistral-vibe
 ```
 
 La déconnexion efface le pool local, mais ne révoque pas nécessairement la clé
 distante. Retirez aussi `MISTRAL_VIBE_API_KEY` de votre environnement et utilisez
-les moyens fournis par Mistral pour toute révocation distante. La désinstallation
-ne doit supprimer aucun autre fichier du domicile Hermes.
+les moyens fournis par Mistral pour toute révocation distante. La commande
+`hermes plugins remove` ne supprime que le plugin `mistral-vibe` du profil visé.
 
 ## Licence
 
