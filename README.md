@@ -44,7 +44,7 @@ commande ci-dessous utilise `~/.hermes` par défaut et respecte `HERMES_HOME`
 s’il est déjà défini :
 
 ```sh
-git clone https://github.com/dorianbannier/hermes-mistral-vibe.git
+git clone https://github.com/nebneo/hermes-mistral-vibe.git
 cd hermes-mistral-vibe
 python3 install.py --home "${HERMES_HOME:-$HOME/.hermes}"
 ```
