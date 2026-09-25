@@ -41,6 +41,17 @@ connexion navigateur si elle est définie.
 
 Les sections suivantes détaillent chaque étape et les options.
 
+> **Windows natif (PowerShell) :** l'installation Hermes vit alors dans
+> `%LOCALAPPDATA%\hermes`, pas dans `~/.hermes`. Utilisez :
+>
+> ```powershell
+> git clone https://github.com/nebneo/hermes-mistral-vibe.git
+> cd hermes-mistral-vibe
+> python install.py --home "$env:LOCALAPPDATA\hermes"
+> ```
+>
+> Sous WSL2, suivez les commandes Linux ci-dessus.
+
 ## Fonctionnement
 
 - connexion navigateur Mistral avec PKCE, stockée dans le pool Hermes dédié
