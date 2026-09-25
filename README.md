@@ -15,6 +15,32 @@ outils et son interface.
 from Hermes. Account-visible models are not proof of Vibe quota coverage; Mistral
 recommends PAYG for API automation. Review billing and access terms before use.
 
+## Démarrage rapide
+
+Installation et connexion pour le profil Hermes par défaut :
+
+```sh
+git clone https://github.com/nebneo/hermes-mistral-vibe.git
+cd hermes-mistral-vibe
+python3 install.py --home "${HERMES_HOME:-$HOME/.hermes}"
+```
+
+> **⚠️ Redémarrez maintenant Hermes Desktop** (ou rafraîchissez la session) :
+> le code Python du plugin n'est chargé qu'au démarrage. Sans redémarrage, le
+> fournisseur `mistral-vibe` ne sera pas actif dans la session en cours.
+
+```sh
+hermes auth add mistral-vibe   # connexion Mistral dans le navigateur
+hermes model                   # sélection volontaire du fournisseur et du modèle
+```
+
+Sur une machine sans navigateur : `hermes auth add mistral-vibe --no-browser`.
+Avec un profil nommé, préfixez les commandes de `hermes -p mon-profil` (voir
+« Authentification »). Une clé manuelle via `MISTRAL_VIBE_API_KEY` remplace la
+connexion navigateur si elle est définie.
+
+Les sections suivantes détaillent chaque étape et les options.
+
 ## Fonctionnement
 
 - connexion navigateur Mistral avec PKCE, stockée dans le pool Hermes dédié
