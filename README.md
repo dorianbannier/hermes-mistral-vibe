@@ -17,13 +17,27 @@ recommends PAYG for API automation. Review billing and access terms before use.
 
 ## Démarrage rapide
 
-Installation et connexion pour le profil Hermes par défaut :
+Choisissez votre système pour l'installation, puis suivez la connexion commune.
+
+### macOS / Linux (et WSL2)
 
 ```sh
 git clone https://github.com/nebneo/hermes-mistral-vibe.git
 cd hermes-mistral-vibe
 python3 install.py --home "${HERMES_HOME:-$HOME/.hermes}"
 ```
+
+### Windows natif (PowerShell)
+
+L'installation Hermes vit dans `%LOCALAPPDATA%\hermes`, pas dans `~/.hermes` :
+
+```powershell
+git clone https://github.com/nebneo/hermes-mistral-vibe.git
+cd hermes-mistral-vibe
+python install.py --home "$env:LOCALAPPDATA\hermes"
+```
+
+### Connexion (tous systèmes)
 
 > **⚠️ Redémarrez maintenant Hermes Desktop** (ou rafraîchissez la session) :
 > le code Python du plugin n'est chargé qu'au démarrage. Sans redémarrage, le
@@ -40,17 +54,6 @@ Avec un profil nommé, préfixez les commandes de `hermes -p mon-profil` (voir
 connexion navigateur si elle est définie.
 
 Les sections suivantes détaillent chaque étape et les options.
-
-> **Windows natif (PowerShell) :** l'installation Hermes vit alors dans
-> `%LOCALAPPDATA%\hermes`, pas dans `~/.hermes`. Utilisez :
->
-> ```powershell
-> git clone https://github.com/nebneo/hermes-mistral-vibe.git
-> cd hermes-mistral-vibe
-> python install.py --home "$env:LOCALAPPDATA\hermes"
-> ```
->
-> Sous WSL2, suivez les commandes Linux ci-dessus.
 
 ## Fonctionnement
 
